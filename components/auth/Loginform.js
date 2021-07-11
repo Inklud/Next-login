@@ -42,9 +42,9 @@ export default function Loginform(props) {
   };
 
   return (
-    <div className="container mx-auto p-8 flex py-12">
-      <div className="max-w-md w-full mx-auto">
-        <div className="bg-white rounded-lg overflow-hidden shadow-2xl">
+    <div className="container flex mt-3 mb-16">
+      <div className="max-w-md w-full ">
+        <div className="bg-white border-t border-gray-300 rounded-lg overflow-hidden shadow-2xl">
           <div className="p-8">
             {Object.entries(error).length !== 0 &&
               error.constructor === Object &&
@@ -82,11 +82,11 @@ export default function Loginform(props) {
                   >
                     Password
                   </label>
-                  <Link href="/forgot-password">
+                  {/*<Link href="/forgot-password">
                     <a className="block inline text-left mb-2 hover:underline text-sm font-medium text-blue-600">
                       Forgotten password?
                     </a>
-                  </Link>
+            </Link>*/}
                 </div>
                 <input
                   onChange={(event) => onChange(event)}
