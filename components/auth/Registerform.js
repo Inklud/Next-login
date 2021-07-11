@@ -50,7 +50,7 @@ export default function Registerform(props) {
   return (
     <div className="container flex mt-3 mb-16">
       <div className="max-w-md w-full">
-        <div className="bg-white border-t border-gray-300 rounded-lg overflow-hidden shadow-2xl">
+        <div className="bg-white border-t border-gray-200 rounded-lg overflow-hidden shadow-2xl">
           <div className="p-8">
             {Object.entries(error).length !== 0 &&
               error.constructor === Object &&
