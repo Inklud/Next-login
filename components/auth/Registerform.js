@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { registerUser } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
-import { uuid } from "uuidv4";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Registerform(props) {
   const [data, updateData] = useState({
@@ -29,7 +29,7 @@ export default function Registerform(props) {
   const submitForm = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const uniq = uuid();
+    const uniq = uuidv4();
     updateData({ ...data, username: uniq });
     registerUser(data.username, data.email, data.password)
       .then((res) => {
