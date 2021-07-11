@@ -69,7 +69,7 @@ export default function Registerform(props) {
                   htmlFor="email"
                   className="block text-left mb-2 text-sm font-medium text-gray-600"
                 >
-                  E-post
+                  Email
                 </label>
 
                 <input
@@ -86,7 +86,7 @@ export default function Registerform(props) {
                     htmlFor="password"
                     className="block inline text-left mb-2 text-sm font-medium text-gray-600"
                   >
-                    Passord
+                    Password
                   </label>
                 </div>
                 <input

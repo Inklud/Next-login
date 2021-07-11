@@ -63,7 +63,7 @@ export default function Loginform(props) {
                   htmlFor="identifier"
                   className="block text-left mb-2 text-sm font-medium text-gray-600"
                 >
-                  E-post
+                  Email
                 </label>
 
                 <input
@@ -80,11 +80,11 @@ export default function Loginform(props) {
                     htmlFor="password"
                     className="block inline text-left mb-2 text-sm font-medium text-gray-600"
                   >
-                    Passord
+                    Password
                   </label>
                   <Link href="/forgot-password">
                     <a className="block inline text-left mb-2 hover:underline text-sm font-medium text-blue-600">
-                      Glemt passordet?
+                      Forgotten password?
                     </a>
                   </Link>
                 </div>
@@ -107,7 +107,7 @@ export default function Loginform(props) {
             <div className="mt-5 text-right">
               <Link href="/register">
                 <a className="hover:underline text-blue-600  text-sm font-medium">
-                  Lag en ny bruker
+                  Create an user
                 </a>
               </Link>
             </div>
