@@ -41,11 +41,6 @@ export default function Header(props) {
                           Members
                         </a>
                       </Link>
-                      <Link href="/members2">
-                        <a className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
-                          Members 2
-                        </a>
-                      </Link>
 
                       <button
                         className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
@@ -138,11 +133,6 @@ export default function Header(props) {
                     <Link href="/members">
                       <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
                         Members
-                      </a>
-                    </Link>
-                    <Link href="/members2">
-                      <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
-                        Members 2
                       </a>
                     </Link>
                     <Link href="/">
