@@ -28,6 +28,8 @@ export default function Registerform(props) {
 
   const submitForm = async (e) => {
     e.preventDefault();
+    data.email = e.target.email.value;
+    data.password = e.target.password.value;
     setLoading(true);
     const uniq = uuidv4();
     updateData({ ...data, username: uniq });

@@ -7,8 +7,11 @@ export default function Register() {
   return (
     <Layout>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Login Project</title>
+        <meta
+          name="description"
+          content="A basic login app to learn Next.js, Tailwind and Strapi"
+        />
       </Head>
       <HeaderTitle title="Register" />
       <Registerform />

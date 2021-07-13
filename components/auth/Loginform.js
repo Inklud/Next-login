@@ -13,7 +13,7 @@ export default function Loginform(props) {
 
   useEffect(() => {
     if (appContext.isAuthenticated) {
-      router.push("/"); // redirect if you're already logged in
+      //  router.push("/"); // redirect if you're already logged in
     }
   }, []);
 
@@ -24,6 +24,8 @@ export default function Loginform(props) {
 
   const submitForm = async (e) => {
     e.preventDefault();
+    data.identifier = e.target.identifier.value;
+    data.password = e.target.password.value;
     setLoading(true);
     login(data.identifier, data.password)
       .then((res) => {
