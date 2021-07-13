@@ -18,7 +18,7 @@ export default function Members2(props) {
             content="A basic login app to learn Next.js, Tailwind and Strapi"
           />
         </Head>
-        <HeaderTitle title="Members only 2" />
+        <HeaderTitle title="Members only" />
         <h1 className="pb-6">
           Members only should see this page. Your email is: {user.email}.
         </h1>
