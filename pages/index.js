@@ -7,6 +7,7 @@ import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
 
 export default function Home(props) {
+  const appContext = useContext(AppContext);
   const { user, setUser } = useContext(AppContext);
   return (
     <Layout>

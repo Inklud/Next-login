@@ -5,7 +5,8 @@ import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
 import Login from "../pages/login";
 
-export default function Members2(props) {
+export default function Members(props) {
+  const appContext = useContext(AppContext);
   const { user, setUser } = useContext(AppContext);
 
   if (user) {
@@ -26,5 +27,9 @@ export default function Members2(props) {
     );
   }
 
-  return <Login />;
+  if (appContext.isLoading) {
+    return <Login />;
+  }
+
+  return <></>;
 }
