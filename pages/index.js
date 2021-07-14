@@ -7,7 +7,6 @@ import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
 
 export default function Home(props) {
-  const appContext = useContext(AppContext);
   const { user, setUser } = useContext(AppContext);
   return (
     <Layout>
@@ -19,7 +18,7 @@ export default function Home(props) {
         />
       </Head>
       <HeaderTitle title="Welcome" />
-      {user ? (
+      {user || appContext.isLoading ? (
         <div className="pb-6">Your email: {user.email}</div>
       ) : (
         <div className="pb-6">
