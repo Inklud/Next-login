@@ -114,7 +114,8 @@ export default function Header(props) {
         >
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
-              <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {/* Removed ref={ref} */}
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {!user ? (
                   <>
                     <Link href="/login">
