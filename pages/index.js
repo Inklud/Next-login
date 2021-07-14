@@ -18,7 +18,7 @@ export default function Home(props) {
         />
       </Head>
       <HeaderTitle title="Welcome" />
-      {user || appContext.isLoading ? (
+      {user ? (
         <div className="pb-6">Your email: {user.email}</div>
       ) : (
         <div className="pb-6">
