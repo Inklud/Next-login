@@ -7,6 +7,7 @@ import AppContext from "../context/AppContext";
 class MyApp extends App {
   state = {
     user: null,
+    showlogin: false,
   };
 
   componentDidMount() {
@@ -30,10 +31,18 @@ class MyApp extends App {
         this.setUser(user);
       });
     }
+
+    if (!token) {
+      this.setShowlogin(true);
+    }
   }
 
   setUser = (user) => {
     this.setState({ user });
+  };
+
+  setShowlogin = (showlogin) => {
+    this.setState({ showlogin });
   };
 
   render() {
@@ -43,6 +52,7 @@ class MyApp extends App {
       <AppContext.Provider
         value={{
           user: this.state.user,
+          showlogin: this.state.showlogin,
           isAuthenticated: !!this.state.user,
           setUser: this.setUser,
         }}
