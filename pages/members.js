@@ -4,9 +4,10 @@ import HeaderTitle from "../components/HeaderTitle";
 import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
 import Login from "../pages/login";
+import Loading from "../components/Loading";
 
 export default function Members(props) {
-  const { showlogin, user, setUser } = useContext(AppContext);
+  const { isLoading, user } = useContext(AppContext);
 
   if (user) {
     return (
@@ -26,5 +27,5 @@ export default function Members(props) {
     );
   }
 
-  return <>{showlogin && <Login />}</>;
+  return <>{isLoading ? <Login /> : <Loading />}</>;
 }

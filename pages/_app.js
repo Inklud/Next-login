@@ -7,7 +7,7 @@ import AppContext from "../context/AppContext";
 class MyApp extends App {
   state = {
     user: null,
-    showlogin: false,
+    isLoading: false,
   };
 
   componentDidMount() {
@@ -33,7 +33,7 @@ class MyApp extends App {
     }
 
     if (!token) {
-      this.setShowlogin(true);
+      this.setIsLoading(true);
     }
   }
 
@@ -41,8 +41,8 @@ class MyApp extends App {
     this.setState({ user });
   };
 
-  setShowlogin = (showlogin) => {
-    this.setState({ showlogin });
+  setIsLoading = (isLoading) => {
+    this.setState({ isLoading });
   };
 
   render() {
@@ -52,9 +52,10 @@ class MyApp extends App {
       <AppContext.Provider
         value={{
           user: this.state.user,
-          showlogin: this.state.showlogin,
+          isLoading: this.state.isLoading,
           isAuthenticated: !!this.state.user,
           setUser: this.setUser,
+          setIsLoading: this.setIsLoading,
         }}
       >
         <Component {...pageProps} />

@@ -1,39 +1,31 @@
 import React, { useContext } from "react";
-import Link from "next/link";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import HeaderTitle from "../components/HeaderTitle";
 import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
+import Loading from "../components/Loading";
+import Indexpage from "../components/Indexpage";
 
-export default function Home(props) {
-  const { user, setUser } = useContext(AppContext);
-  return (
-    <Layout>
-      <Head>
-        <title>Login Project</title>
-        <meta
-          name="description"
-          content="A basic login app to learn Next.js, Tailwind and Strapi"
-        />
-      </Head>
-      <HeaderTitle title="Welcome" />
-      {user ? (
-        <div className="pb-6">Your email: {user.email}</div>
-      ) : (
-        <div className="pb-6">
-          <Link href="/login">
-            <a className="underline hover:no-underline text-blue-600">Login</a>
-          </Link>{" "}
-          or{" "}
-          <Link href="/register">
-            <a className="underline hover:no-underline text-blue-600">
-              register
-            </a>
-          </Link>{" "}
-          to get started.
-        </div>
-      )}
-    </Layout>
-  );
+export default function Members(props) {
+  const { isLoading, user } = useContext(AppContext);
+
+  if (user) {
+    return (
+      <Layout>
+        <Head>
+          <title>Login Project</title>
+          <meta
+            name="description"
+            content="A basic login app to learn Next.js, Tailwind and Strapi"
+          />
+        </Head>
+        <HeaderTitle title="Welcome" />
+        <h1 className="pb-6">
+          <div className="pb-6">Your email: {user.email}</div>
+        </h1>
+      </Layout>
+    );
+  }
+
+  return <>{isLoading ? <Indexpage /> : <Loading />}</>;
 }

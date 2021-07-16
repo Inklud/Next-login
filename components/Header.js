@@ -5,7 +5,7 @@ import { logout } from "../lib/auth";
 import { Transition } from "@headlessui/react";
 
 export default function Header(props) {
-  const { user, setUser } = useContext(AppContext);
+  const { user, setUser, setIsLoading } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -21,20 +21,7 @@ export default function Header(props) {
               <div className="hidden md:flex md:flex-grow md:items-center w-full md:w-auto">
                 <div className="md:mr-auto"></div>
                 <div className="ml-10 flex items-baseline space-x-4">
-                  {!user ? (
-                    <>
-                      <Link href="/login">
-                        <a className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
-                          Login
-                        </a>
-                      </Link>
-                      <Link href="/register">
-                        <a className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
-                          Register
-                        </a>
-                      </Link>
-                    </>
-                  ) : (
+                  {user ? (
                     <>
                       <Link href="/members">
                         <a className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
@@ -46,11 +33,25 @@ export default function Header(props) {
                         className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                         onClick={() => {
                           logout();
+                          setIsLoading(true);
                           setUser(null);
                         }}
                       >
                         Logout
                       </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link href="/login">
+                        <a className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
+                          Login
+                        </a>
+                      </Link>
+                      <Link href="/register">
+                        <a className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
+                          Register
+                        </a>
+                      </Link>
                     </>
                   )}
                 </div>
@@ -116,7 +117,7 @@ export default function Header(props) {
             <div className="md:hidden" id="mobile-menu">
               {/* Removed ref={ref} */}
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                {!user ? (
+                {user ? (
                   <>
                     <Link href="/login">
                       <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
