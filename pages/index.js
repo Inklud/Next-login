@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import Head from "next/head";
-import HeaderTitle from "../components/HeaderTitle";
-import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
-import Loading from "../components/Loading";
-import Indexpage from "../components/Indexpage";
+import Layout from "../layouts/Layout";
+
+import { HeaderTitle, Loading, IndexPage } from "../components";
 
 export default function Members(props) {
   const { isLoading, user } = useContext(AppContext);
@@ -27,5 +26,5 @@ export default function Members(props) {
     );
   }
 
-  return <>{isLoading ? <Indexpage /> : <Loading />}</>;
+  return <>{isLoading ? <IndexPage /> : <Loading />}</>;
 }

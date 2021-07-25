@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout from "../layouts/Layout";
-import Loginform from "../components/auth/Loginform";
-import HeaderTitle from "../components/HeaderTitle";
+
+import { HeaderTitle, LoginForm } from "../components";
 
 export default function Login() {
   return (
@@ -14,7 +14,7 @@ export default function Login() {
         />
       </Head>
       <HeaderTitle title="Login" />
-      <Loginform />
+      <LoginForm />
     </Layout>
   );
 }

@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Layout from "../layouts/Layout";
-import HeaderTitle from "../components/HeaderTitle";
+import Layout from "../../layouts/Layout";
+import { HeaderTitle } from "../../components";
 import Link from "next/link";
 
-export default function Indexpage() {
+export default function IndexPage() {
   return (
     <Layout>
       <Head>

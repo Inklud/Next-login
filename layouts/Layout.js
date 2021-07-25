@@ -1,6 +1,5 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import Head from "next/head";
+import { Header, Footer } from "../components";
 
 //import "../assets/css/Layout.less";
 

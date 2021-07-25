@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useContext, useState } from "react";
-import AppContext from "../context/AppContext";
-import { logout } from "../lib/auth";
+import AppContext from "../../context/AppContext";
+import { logout } from "../../lib/auth";
 import { Transition } from "@headlessui/react";
 
 export default function Header(props) {
@@ -119,19 +119,6 @@ export default function Header(props) {
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {user ? (
                   <>
-                    <Link href="/login">
-                      <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
-                        Login
-                      </a>
-                    </Link>
-                    <Link href="/register">
-                      <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
-                        Register
-                      </a>
-                    </Link>
-                  </>
-                ) : (
-                  <>
                     <Link href="/members">
                       <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
                         Members
@@ -146,6 +133,19 @@ export default function Header(props) {
                         }}
                       >
                         Logout
+                      </a>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/login">
+                      <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
+                        Login
+                      </a>
+                    </Link>
+                    <Link href="/register">
+                      <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
+                        Register
                       </a>
                     </Link>
                   </>

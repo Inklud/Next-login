@@ -1,6 +1,5 @@
-import LoadingHeader from "../components/LoadingHeader";
-import Footer from "../components/Footer";
 import Head from "next/head";
+import { LoadingHeader } from "../components";
 
 //import "../assets/css/Layout.less";
 

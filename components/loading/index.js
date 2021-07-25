@@ -1,7 +1,5 @@
 import Head from "next/head";
-import LoadingLayout from "../layouts/LoadingLayout";
-import Loginform from "../components/auth/Loginform";
-import HeaderTitle from "../components/HeaderTitle";
+import LoadingLayout from "../../layouts/LoadingLayout";
 
 export default function Loading() {
   return (

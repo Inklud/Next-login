@@ -8,6 +8,7 @@ class MyApp extends App {
   state = {
     user: null,
     isLoading: false,
+    isAuth: false,
   };
 
   componentDidMount() {
@@ -25,10 +26,12 @@ class MyApp extends App {
         if (!res.ok) {
           Cookie.remove("token");
           this.setState({ user: null });
+          this.setState({ isAuth: false });
           return null;
         }
         const user = await res.json();
         this.setUser(user);
+        this.setIsAuth(true);
       });
     }
 
@@ -39,6 +42,10 @@ class MyApp extends App {
 
   setUser = (user) => {
     this.setState({ user });
+  };
+
+  setIsAuth = (isAuth) => {
+    this.setState({ isAuth });
   };
 
   setIsLoading = (isLoading) => {
@@ -53,8 +60,10 @@ class MyApp extends App {
         value={{
           user: this.state.user,
           isLoading: this.state.isLoading,
+          isAuth: this.state.isAuth,
           isAuthenticated: !!this.state.user,
           setUser: this.setUser,
+          setIsAuth: this.setIsAuth,
           setIsLoading: this.setIsLoading,
         }}
       >

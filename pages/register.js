@@ -1,7 +1,7 @@
 import Head from "next/head";
-import HeaderTitle from "../components/HeaderTitle";
-import Registerform from "../components/auth/Registerform";
 import Layout from "../layouts/Layout";
+
+import { HeaderTitle, RegisterForm } from "../components";
 
 export default function Register() {
   return (
@@ -14,7 +14,7 @@ export default function Register() {
         />
       </Head>
       <HeaderTitle title="Register" />
-      <Registerform />
+      <RegisterForm />
     </Layout>
   );
 }
