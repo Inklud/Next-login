@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import Head from "next/head";
 import AppContext from "../context/AppContext";
 import Layout from "../layouts/Layout";
-
 import { HeaderTitle, Loading, IndexPage } from "../components";
 
 export default function Members(props) {

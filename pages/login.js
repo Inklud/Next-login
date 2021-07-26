@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Layout from "../layouts/Layout";
-
 import { HeaderTitle, LoginForm } from "../components";
 
 export default function Login() {

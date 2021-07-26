@@ -109,7 +109,7 @@ export default function Loginform(props) {
             <div className="mt-5 text-right">
               <Link href="/register">
                 <a className="hover:underline text-blue-600  text-sm font-medium">
-                  Create an user
+                  Create a user
                 </a>
               </Link>
             </div>
