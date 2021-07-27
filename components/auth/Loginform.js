@@ -10,6 +10,7 @@ export default function Loginform(props) {
   const [error, setError] = useState(false);
   const router = useRouter();
   const appContext = useContext(AppContext);
+  const { setIsAuthstatus } = useContext(AppContext);
 
   useEffect(() => {
     if (appContext.isAuthenticated) {
@@ -31,6 +32,7 @@ export default function Loginform(props) {
       .then((res) => {
         setLoading(false);
         // set authed User in global context to update header/app state
+        setIsAuthstatus(2);
         appContext.setUser(res.data.user);
       })
       .catch((error) => {

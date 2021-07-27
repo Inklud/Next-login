@@ -8,7 +8,7 @@ class MyApp extends App {
   state = {
     user: null,
     isLoading: false,
-    isAuth: false,
+    isAuthstatus: 0,
   };
 
   componentDidMount() {
@@ -25,18 +25,19 @@ class MyApp extends App {
         // delete the token and log the user out on client
         if (!res.ok) {
           Cookie.remove("token");
+          this.setIsAuthstatus(0);
           this.setState({ user: null });
-          this.setState({ isAuth: false });
           return null;
         }
         const user = await res.json();
         this.setUser(user);
-        this.setIsAuth(true);
+        this.setIsAuthstatus(2);
       });
     }
 
     if (!token) {
-      this.setIsLoading(true);
+      this.setIsAuthstatus(1);
+      this.setIsLoading(1);
     }
   }
 
@@ -44,8 +45,8 @@ class MyApp extends App {
     this.setState({ user });
   };
 
-  setIsAuth = (isAuth) => {
-    this.setState({ isAuth });
+  setIsAuthstatus = (isAuthstatus) => {
+    this.setState({ isAuthstatus });
   };
 
   setIsLoading = (isLoading) => {
@@ -60,10 +61,10 @@ class MyApp extends App {
         value={{
           user: this.state.user,
           isLoading: this.state.isLoading,
-          isAuth: this.state.isAuth,
-          isAuthenticated: !!this.state.user,
+          isAuthstatus: this.state.isAuthstatus,
+          isAuthstatusenticated: !!this.state.user,
           setUser: this.setUser,
-          setIsAuth: this.setIsAuth,
+          setIsAuthstatus: this.setIsAuthstatus,
           setIsLoading: this.setIsLoading,
         }}
       >
