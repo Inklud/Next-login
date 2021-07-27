@@ -119,11 +119,13 @@ export default function Header(props) {
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {user ? (
                   <>
-                    <Link href="/members">
-                      <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
-                        Members
-                      </a>
-                    </Link>
+                    {MembersMenuData.map((item) => (
+                      <Link href={item.href} key={item.id}>
+                        <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
+                          {item.text}
+                        </a>
+                      </Link>
+                    ))}
                     <Link href="/">
                       <a
                         className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
