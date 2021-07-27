@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 export default function Registerform(props) {
   const [data, updateData] = useState({
     email: "",
-    username: "",
+    username: uuidv4(),
     password: "",
   });
   const [loading, setLoading] = useState(false);
@@ -31,8 +31,8 @@ export default function Registerform(props) {
     data.email = e.target.email.value;
     data.password = e.target.password.value;
     setLoading(true);
-    const uniq = uuidv4();
-    updateData({ ...data, username: uniq });
+    // const uniq = uuidv4();
+    //updateData({ ...data, username: uniq });
     registerUser(data.username, data.email, data.password)
       .then((res) => {
         // set authed user in global context object

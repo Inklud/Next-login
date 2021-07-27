@@ -16,7 +16,7 @@ class MyApp extends App {
 
     if (token) {
       // authenticate the token on the server and place set user object
-      fetch("https://cms.apiblic.com/users/me", {
+      fetch("https://login.apiblic.com/users/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
