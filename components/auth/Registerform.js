@@ -1,8 +1,7 @@
 import Link from "next/link";
-import React, { useState, useEffect, useContext } from "react";
-import { useRouter } from "next/router";
-import { registerUser } from "../../lib/auth";
+import React, { useState, useContext } from "react";
 import AppContext from "../../context/AppContext";
+import { registerUser } from "../../lib/auth";
 import { v4 as uuidv4 } from "uuid";
 
 export default function Registerform(props) {
@@ -15,12 +14,6 @@ export default function Registerform(props) {
   const [error, setError] = useState({});
   const appContext = useContext(AppContext);
 
-  useEffect(() => {
-    if (appContext.isAuthenticated) {
-      router.push("/"); // redirect if you're already logged in
-    }
-  }, []);
-
   function onChange(event) {
     event.preventDefault();
     updateData({ ...data, [event.target.name]: event.target.value });
@@ -31,8 +24,6 @@ export default function Registerform(props) {
     data.email = e.target.email.value;
     data.password = e.target.password.value;
     setLoading(true);
-    // const uniq = uuidv4();
-    //updateData({ ...data, username: uniq });
     registerUser(data.username, data.email, data.password)
       .then((res) => {
         // set authed user in global context object

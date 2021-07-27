@@ -2,12 +2,20 @@ import Link from "next/link";
 import React, { useState, useContext } from "react";
 import { login } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
+// import { useRouter } from "next/router";
 
 export default function Loginform(props) {
   const [data, updateData] = useState({ identifier: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const { setIsAuthstatus, setUser } = useContext(AppContext);
+  //const appContext = useContext(AppContext);
+  // const router = useRouter();
+  /*useEffect(() => {
+    if (appContext.isAuthenticated) {
+       router.push("/"); // redirect if you're already logged in
+    }
+  }, []);*/
 
   function onChange(event) {
     event.preventDefault();

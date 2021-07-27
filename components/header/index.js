@@ -5,8 +5,7 @@ import { logout } from "../../lib/auth";
 import { Transition } from "@headlessui/react";
 
 export default function Header(props) {
-  const { user, setUser, setIsLoading, setIsAuthstatus } =
-    useContext(AppContext);
+  const { user, setUser, setIsAuthstatus } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -34,7 +33,6 @@ export default function Header(props) {
                         className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                         onClick={() => {
                           logout();
-                          setIsLoading(true);
                           setIsAuthstatus(1);
                           setUser(null);
                         }}
@@ -131,7 +129,6 @@ export default function Header(props) {
                         className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                         onClick={() => {
                           logout();
-                          setIsLoading(true);
                           setIsAuthstatus(1);
                           setUser(null);
                         }}

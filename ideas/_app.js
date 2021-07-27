@@ -3,6 +3,7 @@ import App from "next/app";
 import Cookie from "js-cookie";
 import fetch from "isomorphic-fetch";
 import AppContext from "../context/AppContext";
+
 class MyApp extends App {
   state = {
     user: null,

@@ -1,13 +1,25 @@
 import Link from "next/link";
-import React, { useState, useContext } from "react";
-import { login } from "../../lib/auth";
+import React, { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
+import { registerUser } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
+import { v4 as uuidv4 } from "uuid";
 
-export default function Loginform(props) {
-  const [data, updateData] = useState({ identifier: "", password: "" });
+export default function Registerform(props) {
+  const [data, updateData] = useState({
+    email: "",
+    username: uuidv4(),
+    password: "",
+  });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const { setIsAuthstatus, setUser } = useContext(AppContext);
+  const [error, setError] = useState({});
+  const appContext = useContext(AppContext);
+
+  /* useEffect(() => {
+    if (appContext.isAuthenticated) {
+      router.push("/"); // redirect if you're already logged in
+    }
+  }, []);*/
 
   function onChange(event) {
     event.preventDefault();
@@ -16,29 +28,30 @@ export default function Loginform(props) {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    data.identifier = e.target.identifier.value;
+    data.email = e.target.email.value;
     data.password = e.target.password.value;
     setLoading(true);
-    login(data.identifier, data.password)
+    // const uniq = uuidv4();
+    //updateData({ ...data, username: uniq });
+    registerUser(data.username, data.email, data.password)
       .then((res) => {
+        // set authed user in global context object
+        appContext.setUser(res.data.user);
         setLoading(false);
-        // set authed User in global context to update header/app state
-        setUser(res.data.user);
-        setIsAuthstatus(2);
       })
       .catch((error) => {
-        console.log(error);
-        if (error.response) {
+        if (error.response.data) {
           setError(error.response.data);
+        } else {
+          setError("login successful");
         }
-        setIsAuthstatus(1);
         setLoading(false);
       });
   };
 
   return (
     <div className="container flex mt-3 mb-16">
-      <div className="max-w-md w-full ">
+      <div className="max-w-md w-full">
         <div className="bg-white border-t border-gray-200 rounded-lg overflow-hidden shadow-2xl">
           <div className="p-8">
             {Object.entries(error).length !== 0 &&
@@ -55,7 +68,7 @@ export default function Loginform(props) {
             <form onSubmit={submitForm}>
               <div className="mb-5">
                 <label
-                  htmlFor="identifier"
+                  htmlFor="email"
                   className="block text-left mb-2 text-sm font-medium text-gray-600"
                 >
                   Email
@@ -63,7 +76,7 @@ export default function Loginform(props) {
 
                 <input
                   onChange={(event) => onChange(event)}
-                  name="identifier"
+                  name="email"
                   type="email"
                   className="block  text-left w-full p-3 rounded bg-gray-200 border border-transparent focus:outline-none"
                 />
@@ -77,11 +90,6 @@ export default function Loginform(props) {
                   >
                     Password
                   </label>
-                  {/*<Link href="/forgot-password">
-                    <a className="block inline text-left mb-2 hover:underline text-sm font-medium text-blue-600">
-                      Forgotten password?
-                    </a>
-            </Link>*/}
                 </div>
                 <input
                   onChange={(event) => onChange(event)}
@@ -95,14 +103,14 @@ export default function Loginform(props) {
                 type="submit"
                 className="w-full p-3 mt-4 bg-gray-800 hover:bg-gray-900 text-white rounded shadow"
               >
-                {loading ? "Logging in... " : "Login"}
+                {loading ? "Registering... " : "Register"}
               </button>
             </form>
 
             <div className="mt-5 text-right">
-              <Link href="/register">
+              <Link href="/login">
                 <a className="hover:underline text-blue-600  text-sm font-medium">
-                  Create a user
+                  Allready have a user? Log in
                 </a>
               </Link>
             </div>
