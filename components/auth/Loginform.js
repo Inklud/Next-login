@@ -32,8 +32,8 @@ export default function Loginform(props) {
       .then((res) => {
         setLoading(false);
         // set authed User in global context to update header/app state
-        setIsAuthstatus(2);
         appContext.setUser(res.data.user);
+        setIsAuthstatus(2);
       })
       .catch((error) => {
         if (error.response.data) {
@@ -42,6 +42,7 @@ export default function Loginform(props) {
           setError("login successful");
         }
         setLoading(false);
+        setIsAuthstatus(1);
       });
   };
 
