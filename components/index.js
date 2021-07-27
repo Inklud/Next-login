@@ -6,3 +6,6 @@ export { default as IndexPage } from "./indexPage";
 export { default as LoadingHeader } from "./loadingHeader";
 export { default as LoginForm } from "./auth/Loginform";
 export { default as RegisterForm } from "./auth/Registerform";
+
+export { default as MembersMenuData } from "../fixtures/MembersMenuData.json";
+export { default as PublicMenuData } from "../fixtures/PublicMenuData.json";

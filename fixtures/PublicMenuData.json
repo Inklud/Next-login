@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "text": "Login",
+    "href": "/login"
+  },
+  {
+    "id": 2,
+    "text": "Register",
+    "href": "/register"
+  }
+]

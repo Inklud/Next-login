@@ -4,6 +4,8 @@ import AppContext from "../../context/AppContext";
 import { logout } from "../../lib/auth";
 import { Transition } from "@headlessui/react";
 
+import { MembersMenuData, PublicMenuData } from "../../components";
+
 export default function Header(props) {
   const { user, setUser, setIsAuthstatus } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -23,12 +25,13 @@ export default function Header(props) {
                 <div className="ml-10 flex items-baseline space-x-4">
                   {user ? (
                     <>
-                      <Link href="/members">
-                        <a className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
-                          Members
-                        </a>
-                      </Link>
-
+                      {MembersMenuData.map((item) => (
+                        <Link href={item.href} key={item.id}>
+                          <a className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
+                            {item.text}
+                          </a>
+                        </Link>
+                      ))}
                       <button
                         className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                         onClick={() => {
@@ -42,16 +45,13 @@ export default function Header(props) {
                     </>
                   ) : (
                     <>
-                      <Link href="/login">
-                        <a className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
-                          Login
-                        </a>
-                      </Link>
-                      <Link href="/register">
-                        <a className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
-                          Register
-                        </a>
-                      </Link>
+                      {PublicMenuData.map((item) => (
+                        <Link href={item.href} key={item.id}>
+                          <a className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
+                            {item.text}
+                          </a>
+                        </Link>
+                      ))}
                     </>
                   )}
                 </div>
