@@ -10,9 +10,9 @@ export default function Registerform(props) {
     username: uuidv4(),
     password: "",
   });
+  const { setUser, setIsAuthstatus } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
-  const appContext = useContext(AppContext);
 
   function onChange(event) {
     event.preventDefault();
@@ -27,7 +27,8 @@ export default function Registerform(props) {
     registerUser(data.username, data.email, data.password)
       .then((res) => {
         // set authed user in global context object
-        appContext.setUser(res.data.user);
+        setUser(res.data.user);
+        setIsAuthstatus(2);
         setLoading(false);
       })
       .catch((error) => {
