@@ -2,10 +2,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { forgotPass } from "../../lib/auth";
 
-export default function Forgottenpassform(props) {
-  const [data, updateData] = useState({
-    email: "",
-  });
+export default function Forgottenpassform() {
+  const [data, updateData] = useState({ email: "" });
   const [emailSendt, setEmailSendt] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
@@ -21,8 +19,6 @@ export default function Forgottenpassform(props) {
     setLoading(true);
     forgotPass(data.email)
       .then((res) => {
-        // set authed user in global context object
-        //setUser(res.data.user);
         setEmailSendt(true);
         setLoading(false);
         // console.log("New passsword sent");
