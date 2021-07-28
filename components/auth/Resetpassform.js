@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { resetPass } from "../../lib/auth";
+import Link from "next/link";
 
 export default function Resetpassform(props) {
   const [data, updateData] = useState({
@@ -86,7 +87,13 @@ export default function Resetpassform(props) {
 
           {PasswordResetted && (
             <div className="p-8">
-              Your passwor has been resetted. You may now login.
+              Your password has been resetted. You may now
+              <Link href="/login">
+                <a className="underline hover:no-underline text-blue-600">
+                  login
+                </a>
+              </Link>{" "}
+              .
             </div>
           )}
         </div>
