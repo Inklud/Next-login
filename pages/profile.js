@@ -7,7 +7,7 @@ import Login from "../pages/login";
 import { Loading, HeaderTitle, ExportProfile } from "../components";
 import axios from "axios";
 import Cookie from "js-cookie";
-import { logout } from "../lib/auth";
+import { logoutgohome } from "../lib/auth";
 
 export default function Members(props) {
   const token = Cookie.get("token");
@@ -29,7 +29,7 @@ export default function Members(props) {
         },
       });
       error = null;
-      logout();
+      logoutgohome();
       setIsAuthstatus(1);
       setUser(null);
     } catch (e) {
