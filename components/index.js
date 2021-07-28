@@ -4,7 +4,7 @@ export { default as Loading } from "./loading";
 export { default as HeaderTitle } from "./headerTitle";
 export { default as IndexPage } from "./indexPage";
 export { default as LoadingHeader } from "./loadingHeader";
-export { default as ExportProfile } from "./exportProfile";
+export { default as ExportProfile } from "./ExportProfile";
 export { default as LoginForm } from "./auth/Loginform";
 export { default as RegisterForm } from "./auth/Registerform";
 
