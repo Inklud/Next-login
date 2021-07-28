@@ -87,12 +87,12 @@ export default function Resetpassform(props) {
 
           {PasswordResetted && (
             <div className="p-8">
-              Your password has been resetted. You may now
+              Your password has been resetted. You may now{" "}
               <Link href="/login">
                 <a className="underline hover:no-underline text-blue-600">
                   login
                 </a>
-              </Link>{" "}
+              </Link>
               .
             </div>
           )}
