@@ -1,5 +1,5 @@
 import Head from "next/head";
-import LoadingLayout from "../../layouts/LoadingLayout";
+import LoadingLayout from "../layouts/LoadingLayout";
 
 export default function Loading() {
   return (

@@ -1,15 +1,14 @@
 import React, { useContext } from "react";
 import moment from "moment";
-import Head from "next/head";
 import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
 import Login from "../pages/login";
-import { Loading, HeaderTitle, ExportProfile } from "../components";
+import { Loading, HeaderTitle, ExportProfile, Meta } from "../components";
 import axios from "axios";
 import Cookie from "js-cookie";
 import { logoutgohome } from "../lib/auth";
 
-export default function Members(props) {
+export default function Members() {
   const token = Cookie.get("token");
   const { user, setUser, isAuthstatus, setIsAuthstatus } =
     useContext(AppContext);
@@ -46,13 +45,7 @@ export default function Members(props) {
       {isAuthstatus == 1 && <Login />}
       {isAuthstatus == 2 && (
         <Layout>
-          <Head>
-            <title>Login Project</title>
-            <meta
-              name="description"
-              content="A basic login app to learn Next.js, Tailwind and Strapi"
-            />
-          </Head>
+          <Meta title="Login Project" />
           <HeaderTitle title="Profile" />
           <p>Created: {DateCreated}</p>
           <p className="pb-3">Email: {user.email}</p>

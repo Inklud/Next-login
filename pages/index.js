@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import Head from "next/head";
 import AppContext from "../context/AppContext";
 import Layout from "../layouts/Layout";
-import { HeaderTitle, Loading, IndexPage } from "../components";
-export default function Members(props) {
-  const { user, isAuthstatus } = useContext(AppContext);
+import { HeaderTitle, Loading, IndexPage, Meta } from "../components";
+
+export default function Members() {
+  const { isAuthstatus } = useContext(AppContext);
 
   return (
     <>
@@ -12,13 +12,7 @@ export default function Members(props) {
       {isAuthstatus == 1 && <IndexPage />}
       {isAuthstatus == 2 && (
         <Layout>
-          <Head>
-            <title>Login Project</title>
-            <meta
-              name="description"
-              content="A basic login app to learn Next.js, Tailwind and Strapi"
-            />
-          </Head>
+          <Meta title="Login Project" />
           <HeaderTitle title="Welcome" />
           <h1 className="pb-6">
             <div className="pb-6">

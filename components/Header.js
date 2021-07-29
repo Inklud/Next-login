@@ -1,10 +1,10 @@
 import Link from "next/link";
 import React, { useContext, useState } from "react";
-import AppContext from "../../context/AppContext";
-import { logout } from "../../lib/auth";
+import AppContext from "../context/AppContext";
+import { logout } from "../lib/auth";
 import { Transition } from "@headlessui/react";
 
-import { MembersMenuData, PublicMenuData } from "../../components";
+import { MembersMenuData, PublicMenuData } from "../components";
 
 export default function Header(props) {
   const { user, setUser, setIsAuthstatus } = useContext(AppContext);
