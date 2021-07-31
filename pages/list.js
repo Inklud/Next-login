@@ -7,7 +7,7 @@ import LinksTable from "../components/LinksTable";
 
 export default function List() {
   const { user, isAuthstatus } = useContext(AppContext);
-  console.log(user);
+  // console.log(user);
 
   return (
     <>

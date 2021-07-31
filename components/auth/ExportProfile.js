@@ -8,6 +8,7 @@ export default function ExportProfile(props) {
       )}`}
     >
       <a
+        role="button"
         type="button"
         download="myprofile.json"
         className="p-3 inline mr-3 bg-gray-800 hover:bg-gray-900 text-white rounded
