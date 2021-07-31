@@ -5,7 +5,9 @@ export { default as HeaderTitle } from "./HeaderTitle";
 export { default as IndexPage } from "./IndexPage";
 export { default as LoadingHeader } from "./LoadingHeader";
 export { default as Meta } from "./Meta";
+export { default as Notification } from "./Notification";
 
+export { default as RedirectLogin } from "./auth/RedirectLogin";
 export { default as DeleteProfile } from "./auth/DeleteProfile";
 export { default as ExportProfile } from "./auth/ExportProfile";
 export { default as LoginForm } from "./auth/Loginform";
