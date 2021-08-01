@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Notification } from "../components";
-import { deleteItem } from "../lib/handleforms";
+import { Notification } from "..";
+import { deleteItem } from "../../lib/handleforms";
 import Router from "next/router";
 
 export default function LinksTable(props) {
@@ -25,7 +25,7 @@ export default function LinksTable(props) {
       {listItems.length !== 0 ? (
         <div className="flex-wrap justify-between items-center px-6 py-6">
           <p className="w-full text-lg md:text-xl text-gray-800 font-semibold">
-            Links
+            My bookmarks
           </p>
 
           <div className="mt-5 w-full overflow-auto border">
@@ -68,7 +68,13 @@ export default function LinksTable(props) {
                     <td className="pr-8 text-right">
                       <button
                         onClick={() => deleteIt(item.id)}
-                        className="bg-red-800 transition duration-150 ease-in-out border border-transparent focus:outline-none focus:border-gray-800 focus:shadow-outline-gray hover:bg-red-900 rounded text-white px-5 py-1 text-sm"
+                        className="bg-green-800 transition duration-150 ease-in-out border border-transparent focus:outline-none focus:border-gray-800 focus:shadow-outline-gray hover:bg-green-900 rounded text-white px-5 py-1 text-sm"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => deleteIt(item.id)}
+                        className="ml-3 bg-red-800 transition duration-150 ease-in-out border border-transparent focus:outline-none focus:border-gray-800 focus:shadow-outline-gray hover:bg-red-900 rounded text-white px-5 py-1 text-sm"
                       >
                         Delete
                       </button>
