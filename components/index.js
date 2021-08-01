@@ -1,16 +1,17 @@
-export { default as Header } from "./header/Header";
-export { default as HeaderTitle } from "./header/HeaderTitle";
-export { default as LoadingHeader } from "./header/LoadingHeader";
-
 export { default as Footer } from "./Footer";
 export { default as Loading } from "./Loading";
 export { default as IndexPage } from "./IndexPage";
 export { default as Meta } from "./Meta";
 export { default as Notification } from "./Notification";
 
+// Header
+export { default as Header } from "./header/Header";
+export { default as HeaderTitle } from "./header/HeaderTitle";
+export { default as LoadingHeader } from "./header/LoadingHeader";
+
 // Table
 export { default as AddTableItem } from "./table/AddTableItem";
-export { default as LinksTable } from "./table/LinksTable";
+export { default as LinksTable } from "./table/BookmarksTable";
 
 // Auth
 export { default as RedirectLogin } from "./auth/RedirectLogin";

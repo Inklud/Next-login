@@ -2,7 +2,6 @@ import "tailwindcss/tailwind.css";
 import App from "next/app";
 import Cookie from "js-cookie";
 import fetch from "isomorphic-fetch";
-import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://login.apiblic.com";
@@ -62,9 +61,7 @@ class MyApp extends App {
           setIsAuthstatus: this.setIsAuthstatus,
         }}
       >
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Component {...pageProps} />
       </AppContext.Provider>
     );
   }

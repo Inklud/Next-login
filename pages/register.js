@@ -1,12 +1,11 @@
-import Layout from "../layouts/Layout";
-import { HeaderTitle, RegisterForm, Meta } from "../components";
+import { Meta, HeaderTitle, RegisterForm } from "../components";
 
 export default function Register() {
   return (
-    <Layout>
+    <>
       <Meta title="Login Project" />
       <HeaderTitle title="Register" />
       <RegisterForm />
-    </Layout>
+    </>
   );
 }

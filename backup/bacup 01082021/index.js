@@ -1,16 +1,18 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import AppContext from "../context/AppContext";
+import Layout from "../layouts/Layout";
 import Link from "next/link";
-import { Meta, HeaderTitle, IndexPage } from "../components";
+import { HeaderTitle, Loading, IndexPage, Meta } from "../components";
 
 export default function Members() {
   const { isAuthstatus } = useContext(AppContext);
 
   return (
     <>
+      {isAuthstatus == 0 && <Loading />}
       {isAuthstatus == 1 && <IndexPage />}
       {isAuthstatus == 2 && (
-        <>
+        <Layout>
           <Meta title="Login Project" />
           <HeaderTitle title="Welcome" />
           <h1 className="pb-6">
@@ -24,7 +26,7 @@ export default function Members() {
               page.
             </div>
           </h1>
-        </>
+        </Layout>
       )}
     </>
   );

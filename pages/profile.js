@@ -1,15 +1,13 @@
 import { useContext } from "react";
-import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
+import moment from "moment";
 import {
-  Loading,
+  Meta,
   HeaderTitle,
   ExportProfile,
-  Meta,
   DeleteProfile,
   RedirectLogin,
 } from "../components";
-import moment from "moment";
 
 export default function Members() {
   const { user, isAuthstatus } = useContext(AppContext);
@@ -23,10 +21,9 @@ export default function Members() {
 
   return (
     <>
-      {isAuthstatus == 0 && <Loading />}
       {isAuthstatus == 1 && <RedirectLogin />}
       {isAuthstatus == 2 && (
-        <Layout>
+        <>
           <Meta title="Login Project" />
           <HeaderTitle title="Profile" />
           <p>Created: {DateCreated}</p>
@@ -35,7 +32,7 @@ export default function Members() {
             <ExportProfile user={user} />
             <DeleteProfile userid={user.id} />
           </div>
-        </Layout>
+        </>
       )}
     </>
   );

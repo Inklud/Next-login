@@ -1,11 +1,10 @@
 import Head from "next/head";
-import Layout from "../layouts/Layout";
 import { HeaderTitle } from "../components";
 import Link from "next/link";
 
 export default function IndexPage() {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Login Project</title>
         <meta
@@ -24,6 +23,6 @@ export default function IndexPage() {
         </Link>{" "}
         to get started.
       </div>
-    </Layout>
+    </>
   );
 }
