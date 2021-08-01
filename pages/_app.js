@@ -3,6 +3,8 @@ import App from "next/app";
 import Cookie from "js-cookie";
 import fetch from "isomorphic-fetch";
 import AppContext from "../context/AppContext";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://login.apiblic.com";
 class MyApp extends App {
   state = {
     user: null,
@@ -15,7 +17,7 @@ class MyApp extends App {
 
     if (token) {
       // authenticate the token on the server and place set user object
-      fetch("https://login.apiblic.com/users/me", {
+      fetch(`${API_URL}/users/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
-import Login from "../pages/login";
 import {
   Loading,
   HeaderTitle,
   ExportProfile,
   Meta,
   DeleteProfile,
+  RedirectLogin,
 } from "../components";
 import moment from "moment";
 
@@ -24,7 +24,7 @@ export default function Members() {
   return (
     <>
       {isAuthstatus == 0 && <Loading />}
-      {isAuthstatus == 1 && <Login />}
+      {isAuthstatus == 1 && <RedirectLogin />}
       {isAuthstatus == 2 && (
         <Layout>
           <Meta title="Login Project" />

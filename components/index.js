@@ -1,9 +1,9 @@
-export { default as Header } from "./Header";
+export { default as Header } from "./header/Header";
 export { default as Footer } from "./Footer";
 export { default as Loading } from "./Loading";
-export { default as HeaderTitle } from "./HeaderTitle";
+export { default as HeaderTitle } from "./header/HeaderTitle";
 export { default as IndexPage } from "./IndexPage";
-export { default as LoadingHeader } from "./LoadingHeader";
+export { default as LoadingHeader } from "./header/LoadingHeader";
 export { default as Meta } from "./Meta";
 export { default as Notification } from "./Notification";
 

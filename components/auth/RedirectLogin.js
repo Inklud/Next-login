@@ -1,3 +1,6 @@
-export default function RedirectLogin() {
-  return;
-}
+import Router from "next/router";
+const RedirectLogin = () => {
+  Router.push("./login");
+  return null;
+};
+export default RedirectLogin;

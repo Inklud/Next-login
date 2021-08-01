@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useContext, useState } from "react";
-import AppContext from "../context/AppContext";
+import AppContext from "../../context/AppContext";
 import { Transition } from "@headlessui/react";
 
 export default function Header(props) {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Notification } from "../components";
-import { deleteItem } from "../lib/listLogic";
+import { deleteItem } from "../lib/handleforms";
 import Router from "next/router";
 
 export default function LinksTable(props) {
