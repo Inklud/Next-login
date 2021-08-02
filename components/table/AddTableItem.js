@@ -28,7 +28,7 @@ export default function AddTableItem(props) {
     data.description = e.target.description.value;
     data.users_permissions_user = props.userId;
     setLoading(true);
-    addItem(data.url, data.text, data.description, data.users_permissions_user)
+    addItem(data.text, data.url, data.description, data.users_permissions_user)
       .then((res) => {
         // set authed user in global context object
         Router.reload(window.location.pathname);
@@ -104,7 +104,7 @@ export default function AddTableItem(props) {
                   />
                 </div>
                 <label className="w-full pb-3 pt-3" htmlFor="url">
-                  URL:
+                  URL (Starts with https:// or http://):
                 </label>
                 <div className="w-full md:w-3/4">
                   <input
