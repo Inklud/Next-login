@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import AppContext from "../../context/AppContext";
 import { registerUser } from "../../lib/auth";
 import { v4 as uuidv4 } from "uuid";

@@ -19,7 +19,7 @@ export default function List() {
           <Meta title="Login Project" />
           <HeaderTitle title="Bookmarks" />
           <div className="mt-3 mb-12">
-            <AddTableItem />
+            <AddTableItem userId={user.id} />
             <LinksTable links={user.links} />
           </div>
         </>

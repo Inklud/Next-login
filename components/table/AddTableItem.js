@@ -1,11 +1,47 @@
 import { useState } from "react";
 import { addItem } from "../../lib/handleforms";
+import Router from "next/router";
 
-export default function AddTableItem() {
+export default function AddTableItem(props) {
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
+  const [data, updateData] = useState({
+    url: "",
+    title: "",
+    description: "",
+  });
 
   function toggleAddItems() {
     setIsOpen((prevCheck) => !prevCheck);
+  }
+
+  function onChange(event) {
+    event.preventDefault();
+    updateData({ ...data, [event.target.name]: event.target.value });
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    data.url = e.target.url.value;
+    data.text = e.target.text.value;
+    data.description = e.target.description.value;
+    data.users_permissions_user = props.userId;
+    setLoading(true);
+    addItem(data.url, data.text, data.description, data.users_permissions_user)
+      .then((res) => {
+        // set authed user in global context object
+        Router.reload(window.location.pathname);
+        setLoading(false);
+      })
+      .catch((error) => {
+        if (error.response.data) {
+          setError(error.response.data);
+        } else {
+          setError("not added");
+        }
+        setLoading(false);
+      });
   }
 
   return (
@@ -39,11 +75,11 @@ export default function AddTableItem() {
                   width="32"
                   height="32"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="#000"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path stroke="none" d="M0 0h24v24H0z"></path>
                   <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -51,9 +87,9 @@ export default function AddTableItem() {
                 </svg>
               </div>
             </div>
-            <form className="w-full mt-3 max-w-2xl">
+            <form className="w-full mt-3 max-w-2xl" onSubmit={submitForm}>
               <div className="mt-3 flex flex-wrap mb-1">
-                <label className="w-full pb-3" for="userinput">
+                <label className="w-full pb-3" htmlFor="title">
                   Title:
                 </label>
                 <div className="w-full md:w-3/4">
@@ -61,29 +97,35 @@ export default function AddTableItem() {
                     className="appearance-none placeholder-gray-800 inline-block w-full py-3 px-4 mb-4 md:mb-0 text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded md:rounded-r-none"
                     type="text"
                     id="userinput"
+                    onChange={(event) => onChange(event)}
+                    name="text"
                     required
                     aria-label="Insert link text"
                   />
                 </div>
-                <label className="w-full pb-3 pt-3" for="userinput">
+                <label className="w-full pb-3 pt-3" htmlFor="url">
                   URL:
                 </label>
                 <div className="w-full md:w-3/4">
                   <input
                     className="appearance-none placeholder-gray-800 inline-block w-full py-3 px-4 mb-4 md:mb-0 text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded md:rounded-r-none"
                     type="text"
+                    onChange={(event) => onChange(event)}
                     id="userinput"
+                    name="url"
                     required
                     aria-label="Insert link text"
                   />
                 </div>
-                <label className="w-full pb-3 pt-3" for="userinput">
+                <label className="w-full pb-3 pt-3" htmlFor="description">
                   Description:
                 </label>
                 <div className="w-full md:w-3/4">
                   <input
                     className="appearance-none placeholder-gray-800 inline-block w-full py-3 px-4 mb-4 md:mb-0 text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded md:rounded-r-none"
                     type="text"
+                    onChange={(event) => onChange(event)}
+                    name="description"
                     id="userinput"
                     required
                     aria-label="Insert link text"
@@ -95,7 +137,9 @@ export default function AddTableItem() {
                     type="submit"
                     className="font-medium mt-8 py-4 px-4 leading-none text-white rounded bg-gray-800 hover:bg-gray-900"
                   >
-                    <span>Add bookmark</span>
+                    <span>
+                      {loading ? "Adding bookmark... " : "Add bookmark"}
+                    </span>
                   </button>
                 </div>
 
