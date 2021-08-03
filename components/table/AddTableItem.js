@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { addItem } from "../../lib/handleforms";
-import Router from "next/router";
+import { useState, useContext } from "react";
+import { addItem, getItem } from "../../lib/handleforms";
+import AppContext from "../../context/AppContext";
 
 export default function AddTableItem(props) {
+  const { setIsData } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
@@ -11,6 +12,17 @@ export default function AddTableItem(props) {
     title: "",
     description: "",
   });
+
+  function getIt(props) {
+    getItem(props)
+      .then((res) => {
+        setIsData(res.data);
+        setIsOpen(false);
+      })
+      .catch((error) => {
+        // console.log(error);
+      });
+  }
 
   function toggleAddItems() {
     setIsOpen((prevCheck) => !prevCheck);
@@ -31,7 +43,7 @@ export default function AddTableItem(props) {
     addItem(data.text, data.url, data.description, data.users_permissions_user)
       .then((res) => {
         // set authed user in global context object
-        Router.reload(window.location.pathname);
+        getIt();
         setLoading(false);
       })
       .catch((error) => {
@@ -48,7 +60,7 @@ export default function AddTableItem(props) {
     <>
       {!isOpen && (
         <div className="w-full">
-          <div className="float-left">
+          <div className="float-right">
             <button
               onClick={() => toggleAddItems()}
               className="h-8 mb-6 font-medium px-4 leading-none rounded text-white bg-gray-800 hover:bg-gray-900"

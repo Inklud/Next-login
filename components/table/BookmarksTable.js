@@ -1,16 +1,37 @@
 import Link from "next/link";
 import { Notification, EditTableItem } from "..";
-import { deleteItem } from "../../lib/handleforms";
-import Router from "next/router";
-import { useState } from "react";
+import { getItem, deleteItem } from "../../lib/handleforms";
+import { useState, useContext } from "react";
+import AppContext from "../../context/AppContext";
 
 export default function LinksTable(props) {
+  const { isData, setIsData, user } = useContext(AppContext);
   const [isEdit, setIsEdit] = useState(false);
   const [editItem, setEditItem] = useState({});
-  // console.log(props);
-  var listItems = props.links;
+  const [isLoading, setIsLoading] = useState(false);
+  const [timestamp, setTimestamp] = useState("");
+
+  //useEffect(() => {
+  // setIsData(user.links);
+  // setIsLoading(false);
+  //  getData();
+  //}, []);
+
+  function getData(props) {
+    setIsLoading(true);
+    getItem(props)
+      .then((res) => {
+        setIsData(res.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        // console.log(error);
+        setIsLoading(false);
+      });
+  }
 
   function EditIt(props) {
+    setTimestamp(Date.now());
     setEditItem(props);
     setIsEdit(true);
   }
@@ -18,7 +39,7 @@ export default function LinksTable(props) {
   function deleteIt(props) {
     deleteItem(props)
       .then((res) => {
-        Router.reload(window.location.pathname);
+        getData();
       })
       .catch((error) => {
         console.log("error");
@@ -27,8 +48,15 @@ export default function LinksTable(props) {
 
   return (
     <>
+      {isEdit && (
+        <EditTableItem
+          timestamp={timestamp}
+          item={editItem}
+          userId={props.userId}
+        />
+      )}
       <div className="clear-both mt-2 bg-white rounded border border-gray-800">
-        {listItems.length !== 0 ? (
+        {isData.length !== 0 ? (
           <div className="flex-wrap justify-between items-center px-6 py-6">
             <p className="w-full text-lg md:text-xl text-gray-800 font-semibold">
               My bookmarks
@@ -52,7 +80,7 @@ export default function LinksTable(props) {
                   </tr>
                 </thead>
                 <tbody>
-                  {listItems.map((item) => (
+                  {isData.map((item) => (
                     <tr
                       key={item.id}
                       className="h-16 border-gray-300 border-t border-b hover:border-indigo-300 hover:shadow-md transition duration-150 ease-in-out"
@@ -95,7 +123,6 @@ export default function LinksTable(props) {
           <Notification message="You have no bookmarks yet - Start adding!" />
         )}
       </div>
-      {isEdit && <EditTableItem item={editItem} userId={props.userId} />}
     </>
   );
 }

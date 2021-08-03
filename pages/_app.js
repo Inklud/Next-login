@@ -11,6 +11,7 @@ class MyApp extends App {
     user: null,
     isLoading: false,
     isAuthstatus: 0,
+    isData: [],
   };
 
   componentDidMount() {
@@ -34,6 +35,7 @@ class MyApp extends App {
         const user = await res.json();
         this.setUser(user);
         this.setIsAuthstatus(2);
+        this.setIsData(user.links);
       });
     }
 
@@ -50,6 +52,10 @@ class MyApp extends App {
     this.setState({ isAuthstatus });
   };
 
+  setIsData = (isData) => {
+    this.setState({ isData });
+  };
+
   render() {
     const { Component, pageProps } = this.props;
 
@@ -58,8 +64,10 @@ class MyApp extends App {
         value={{
           user: this.state.user,
           isAuthstatus: this.state.isAuthstatus,
+          isData: this.state.isData,
           setUser: this.setUser,
           setIsAuthstatus: this.setIsAuthstatus,
+          setIsData: this.setIsData,
         }}
       >
         <Layout>

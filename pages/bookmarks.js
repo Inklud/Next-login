@@ -20,7 +20,7 @@ export default function List() {
           <HeaderTitle title="Bookmarks" />
           <div className="mt-3 mb-12">
             <AddTableItem userId={user.id} />
-            <LinksTable links={user.links} userId={user.id} />
+            <LinksTable userId={user.id} />
           </div>
         </>
       )}
