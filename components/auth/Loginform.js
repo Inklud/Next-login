@@ -7,7 +7,7 @@ export default function Loginform(props) {
   const [data, updateData] = useState({ identifier: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const { setIsAuthstatus, setUser } = useContext(AppContext);
+  const { setIsAuthstatus, setUser, setIsData } = useContext(AppContext);
 
   function onChange(event) {
     event.preventDefault();
@@ -24,6 +24,7 @@ export default function Loginform(props) {
         setLoading(false);
         // set authed User in global context to update header/app state
         setUser(res.data.user);
+        setIsData(res.data.user.links);
         setIsAuthstatus(2);
       })
       .catch((error) => {
