@@ -26,6 +26,7 @@ export default function LinksTable(props) {
       })
       .catch((error) => {
         // console.log(error);
+        console.log("Error, could not read:" + error);
         setIsLoading(false);
       });
   }
@@ -42,7 +43,7 @@ export default function LinksTable(props) {
         getData();
       })
       .catch((error) => {
-        console.log("error");
+        console.log("Error, could not delete:" + error);
       });
   }
 

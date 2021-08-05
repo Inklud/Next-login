@@ -65,6 +65,7 @@ export default function EditTableItem(props) {
         if (error.response.data) {
           setError(error.response.data);
         } else {
+          console.log("Error, could not edit:" + error);
           setError("not added");
         }
         setLoading(false);

@@ -20,7 +20,7 @@ export default function AddTableItem(props) {
         setIsOpen(false);
       })
       .catch((error) => {
-        // console.log(error);
+        console.log("Error, could not read:" + error);
       });
   }
 
@@ -50,7 +50,7 @@ export default function AddTableItem(props) {
         if (error.response.data) {
           setError(error.response.data);
         } else {
-          setError("not added");
+          setError("Error, not added:" + error);
         }
         setLoading(false);
       });
