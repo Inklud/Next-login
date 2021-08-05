@@ -50,8 +50,8 @@ export default function AddTableItem(props) {
         if (error.response.data) {
           setError(error.response.data);
         } else {
-          console.log("Error, could not read:" + error);
-          setError("Error, not added:);
+          console.log("Error, could not add:" + error);
+          setError("Error, not added");
         }
         setLoading(false);
       });
