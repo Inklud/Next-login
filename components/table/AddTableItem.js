@@ -48,6 +48,7 @@ export default function AddTableItem(props) {
       })
       .catch((error) => {
         if (error.response.data) {
+          console.log("Error, could not add:" + error);
           setError(error.response.data);
         } else {
           console.log("Error, could not add:" + error);
