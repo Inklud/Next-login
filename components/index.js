@@ -14,6 +14,11 @@ export { default as AddTableItem } from "./bookmarks/AddTableItem";
 export { default as EditTableItem } from "./bookmarks/EditTableItem";
 export { default as LinksTable } from "./bookmarks/BookmarksTable";
 
+// Cars
+export { default as AddCar } from "./cars/AddCar";
+export { default as CarsTable } from "./cars/CarsTable";
+export { default as EditCar } from "./cars/EditCar";
+
 // Auth
 export { default as RedirectLogin } from "./auth/RedirectLogin";
 export { default as DeleteProfile } from "./auth/DeleteProfile";
