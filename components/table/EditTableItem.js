@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { editItem, getItem } from "../../lib/handleforms";
+import { editItem, getItem } from "../../lib/handleBookmarkForm";
 import AppContext from "../../context/AppContext";
 
 export default function EditTableItem(props) {

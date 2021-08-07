@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Notification, EditTableItem } from "..";
-import { getItem, deleteItem } from "../../lib/handleforms";
+import { getItem, deleteItem } from "../../lib/handleBookmarkForm";
 import { useState, useContext } from "react";
 import AppContext from "../../context/AppContext";
 
