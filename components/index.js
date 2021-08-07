@@ -10,9 +10,9 @@ export { default as HeaderTitle } from "./header/HeaderTitle";
 export { default as LoadingHeader } from "./header/LoadingHeader";
 
 // Table
-export { default as AddTableItem } from "./table/AddTableItem";
-export { default as EditTableItem } from "./table/EditTableItem";
-export { default as LinksTable } from "./table/BookmarksTable";
+export { default as AddTableItem } from "./bookmarks/AddTableItem";
+export { default as EditTableItem } from "./bookmarks/EditTableItem";
+export { default as LinksTable } from "./bookmarks/BookmarksTable";
 
 // Auth
 export { default as RedirectLogin } from "./auth/RedirectLogin";
