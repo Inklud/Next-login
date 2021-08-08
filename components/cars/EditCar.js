@@ -43,7 +43,6 @@ export default function EditTableItem(props) {
     e.preventDefault();
     data.text = e.target.text.value;
     data.description = e.target.description.value;
-    data.users_permissions_user = props.userId;
     data.itemId = props.item.id;
     setLoading(true);
     editItem(

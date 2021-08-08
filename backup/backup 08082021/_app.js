@@ -4,9 +4,13 @@ import Cookie from "js-cookie";
 import fetch from "isomorphic-fetch";
 import Layout from "../layouts/Layout";
 import AppContext from "../context/AppContext";
-import { RedirectLogin } from "../components";
 
-// Protected paths
+var publicRoutes = [
+  "/login",
+  "/register",
+  "/forgot-password",
+  "/reset-password",
+];
 var authRoutes = ["/profile", "/cars", "/bookmarks"];
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://login.apiblic.com";
@@ -69,6 +73,8 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, router } = this.props;
 
+    console.log(router.route);
+
     return (
       <AppContext.Provider
         value={{
@@ -82,26 +88,13 @@ class MyApp extends App {
           setIsCarsData: this.setIsCarsData,
         }}
       >
-        {/* Return if user is loged in */}
-        {authRoutes.indexOf(router.route) > -1 && (
-          <>
-            {this.state.isAuthstatus == 1 && <RedirectLogin />}
-            {this.state.isAuthstatus == 2 && (
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            )}
-          </>
-        )}
+        {publicRoutes.indexOf(router.route) > -1 && <>Public</>}
+        {authRoutes.indexOf(router.route) > -1 && <>Auth</>}
+        {router.route == "/" && <>Index page</>}
 
-        {/* Return if user is not loged in */}
-        {authRoutes.indexOf(router.route) > -1 !== true && (
-          <>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </>
-        )}
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </AppContext.Provider>
     );
   }

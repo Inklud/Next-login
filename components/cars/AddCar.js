@@ -36,7 +36,6 @@ export default function AddTableItem(props) {
     e.preventDefault();
     data.text = e.target.text.value;
     data.description = e.target.description.value;
-    data.users_permissions_user = props.userId;
     setLoading(true);
     addItem(data.text, data.description, data.users_permissions_user)
       .then((res) => {
